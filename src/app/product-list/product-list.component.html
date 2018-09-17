@@ -1,3 +1,8 @@
-<p>
-  product-list works!
-</p>
+<h4>Products</h4>
+
+<ul>
+  <div *ngFor="let product of products">
+    <li>{{ product.artistName }} | {{ product.albumName }}</li>
+    <li><a [routerLink]="['/product', product.id]"> Details </a></li>
+  </div>
+</ul>

@@ -1,6 +1,8 @@
-import { Album } from './../common/album';
-import { ProductService } from './../product.service';
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+
+import { Album } from './../common/album';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-product-page',
@@ -10,10 +12,10 @@ import { Component, OnInit } from '@angular/core';
 export class ProductPageComponent implements OnInit {
   private album: Album;
 
-  constructor(private productService: ProductService) { }
+  constructor(private route: ActivatedRoute, private productService: ProductService) { }
 
   ngOnInit() {
-    this.productService.getAlbum(1).subscribe(a => this.album = a);
-    }
-
+    let albumId = this.route.snapshot.params['id'];
+    this.productService.getAlbums().subscribe(a => this.album = a.find(a => a.id === +albumId));
+  }
 }

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { ProductPageComponent } from './product-page/product-page.component';
@@ -10,6 +11,7 @@ import { ProductTrackListingComponent } from './product-track-listing/product-tr
 import { ProductDescriptionComponent } from './product-description/product-description.component';
 import { ProductService } from './product.service';
 import { ProductListComponent } from './product-list/product-list.component';
+import { appRoutes } from './routes';
 
 @NgModule({
   declarations: [
@@ -23,9 +25,12 @@ import { ProductListComponent } from './product-list/product-list.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes)
   ],
-  providers: [ProductService],
+  providers: [
+    ProductService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
