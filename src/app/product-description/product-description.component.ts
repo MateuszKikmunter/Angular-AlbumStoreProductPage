@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { ProductService } from './../product.service';
 import { Album } from '../common/album';
@@ -9,11 +9,10 @@ import { Album } from '../common/album';
   styleUrls: ['./product-description.component.css']
 })
 export class ProductDescriptionComponent implements OnInit {
-  private album: Album;
+  @Input() album: Album;
 
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
-    this.productService.getAlbum(1).subscribe(a => this.album = a);
   }
 }
